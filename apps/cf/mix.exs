@@ -4,7 +4,7 @@ defmodule CF.Mixfile do
   def project do
     [
       app: :cf,
-      version: "1.0.3",
+      version: "1.0.4",
       build_path: "../../_build",
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       config_path: "../../config/config.exs",
@@ -43,7 +43,7 @@ defmodule CF.Mixfile do
       {:google_api_you_tube, "~> 0.1.0"},
       {:kaur, "~> 1.1"},
       {:bcrypt_elixir, "~> 1.0"},
-      {:guardian, "~> 1.1.0"},
+      {:guardian, "~> 1.2.1"},
       {:guardian_db, "~> 1.1.0"},
       {:floki, "~> 0.20.2"},
       {:html_entities, "~> 0.3"},
@@ -57,7 +57,7 @@ defmodule CF.Mixfile do
       {:rollbax, ">= 0.0.0"},
       {:sweet_xml, "~> 0.6"},
       {:burnex, "~> 1.0"},
-      {:yaml_elixir, "~> 2.1.0"},
+      {:yaml_elixir, "~> 2.4.0"},
 
       # ---- Internal ----
       {:db, in_umbrella: true},
