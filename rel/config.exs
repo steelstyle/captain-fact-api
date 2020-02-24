@@ -1,4 +1,4 @@
-use Mix.Releases.Config, default_environment: :prod
+use Distillery.Releases.Config, default_environment: :prod
 
 # Environments
 
@@ -21,7 +21,7 @@ environment :prod do
 
   set(
     config_providers: [
-      {Mix.Releases.Config.Providers.Elixir, ["${RELEASE_ROOT_DIR}/etc/config.exs"]}
+      {Distillery.Releases.Config.Providers.Elixir, ["${RELEASE_ROOT_DIR}/etc/config.exs"]}
     ]
   )
 
@@ -33,6 +33,20 @@ environment :prod do
 end
 
 # Releases
+
+release :cf_full_app do
+  set(version: current_version(:cf_rest_api))
+  set(applications: [:cf_rest_api, :cf_jobs, :cf_graphql, :cf_atom_feed])
+  set(post_start_hooks: "rel/hooks/migrate_db")
+
+  set(
+    commands: [
+      migrate: "rel/commands/migrate.sh",
+      seed: "rel/commands/seed.sh",
+      seed_politicians: "rel/commands/seed_politicians.sh"
+    ]
+  )
+end
 
 release :cf_rest_api do
   set(version: current_version(:cf_rest_api))
@@ -63,9 +77,4 @@ end
 release :cf_atom_feed do
   set(version: current_version(:cf_atom_feed))
   set(applications: [:cf_atom_feed])
-end
-
-release :cf_opengraph do
-  set(version: current_version(:cf_opengraph))
-  set(applications: [:cf_opengraph])
 end
