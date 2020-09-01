@@ -1,0 +1,3 @@
+- [ ] Check all calls to postgrex
+- [ ] Check all fields that were using Ecto.DateTime
+- [ ] Check Multi.run

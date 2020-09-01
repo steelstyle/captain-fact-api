@@ -168,7 +168,7 @@ defmodule CF.Accounts do
       end)
       |> User.provider_changeset(provider_params)
     )
-    |> Multi.run(:final_user, fn %{base_user: user} ->
+    |> Multi.run(:final_user, fn _repo, %{base_user: user} ->
       user
       |> User.changeset(%{})
       |> Ecto.Changeset.put_change(:username, UsernameGenerator.generate(user.id))

@@ -237,7 +237,7 @@ defmodule CF.Jobs.Moderation do
           user_id: nil,
           type: action_type,
           entity: entity_type,
-          inserted_at: Ecto.DateTime.utc()
+          inserted_at: DateTime.utc_now()
         })
       end)
     )

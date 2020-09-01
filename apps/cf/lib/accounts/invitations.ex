@@ -153,7 +153,7 @@ defmodule CF.Accounts.Invitations do
     do: generate_invites(number, TokenGenerator.generate(@default_token_length))
 
   def generate_invites(number, token) do
-    time = Ecto.DateTime.utc()
+    time = DateTime.utc_now()
 
     Repo.insert_all(
       InvitationRequest,
